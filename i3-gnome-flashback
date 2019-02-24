@@ -24,9 +24,9 @@ if [ ! -f ~/.regolith-init-flag ]; then
 fi
 
 if [ ! -f ~/.config/i3-regolith/config ]; then
-	echo "Copying default Regolith i3 configuration to user directory."
-	mkdir -p ~/.config/i3-regolith
-	cp /etc/xdg/i3/regolith-i3.config ~/.config/i3-regolith/config
+        echo "Copying default Regolith i3 configuration to user directory."
+        mkdir -p ~/.config/i3-regolith
+        cp /etc/xdg/i3/regolith-i3.config ~/.config/i3-regolith/config
 fi
 
 i3  -c ~/.config/i3-regolith/config

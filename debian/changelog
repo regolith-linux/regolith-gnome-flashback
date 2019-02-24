@@ -1,3 +1,15 @@
+regolith-gnome-flashback (1.13-1ubuntu0) bionic; urgency=medium
+
+  * Add regolith init code back into package. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 24 Feb 2019 11:28:41 -0800
+
+regolith-gnome-flashback (1.12-1ubuntu0) bionic; urgency=medium
+
+  * Revert to upstream names. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 24 Feb 2019 10:45:10 -0800
+
 regolith-gnome-flashback (1.11-1ubuntu0) bionic; urgency=medium
 
   * More string fixes for session name.

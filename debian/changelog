@@ -1,3 +1,15 @@
+regolith-gnome-flashback (1.11-1ubuntu0) bionic; urgency=medium
+
+  * More string fixes for session name.
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 24 Feb 2019 09:34:50 -0800
+
+regolith-gnome-flashback (1.1-1ubuntu0) bionic; urgency=medium
+
+  * Fix incorrect session name.
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 24 Feb 2019 09:07:02 -0800
+
 regolith-gnome-flashback (1.0-1) bionic; urgency=medium
 
   * Initial release

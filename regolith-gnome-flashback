@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Register with gnome-session so that it does not kill the whole session thinking it is dead.
+if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
+	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
+fi
+
+if [ ! -f ~/.regolith-init-flag ]; then
+        echo "Executing regolith session configuration script."
+
+        # Required for Nautils to work correctly with i3
+        gsettings set org.gnome.desktop.background show-desktop-icons false
+
+        # Set the theme
+        gsettings set org.gnome.desktop.interface gtk-theme "SolArc-Dark"
+        gsettings set org.gnome.desktop.wm.preferences theme "SolArc-Dark"
+        gsettings set org.gnome.desktop.interface icon-theme "Arc"
+
+        # Set the lockscreen background
+        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ESP_020323_2050_desktop.jpg"
+
+        # Only run this script once per login session.
+        touch ~/.regolith-init-flag
+fi
+
+if [ ! -f ~/.config/i3-regolith/config ]; then
+	echo "Copying default Regolith i3 configuration to user directory."
+	mkdir -p ~/.config/i3-regolith
+	cp /etc/xdg/i3/regolith-i3.config ~/.config/i3-regolith/config
+fi
+
+i3  -c ~/.config/i3-regolith/config
+
+# Close session when i3 exits.
+if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
+	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.Logout "uint32:1"
+fi

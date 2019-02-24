@@ -1,0 +1,13 @@
+Source: regolith-gnome-flashback
+Section: x11
+Priority: optional
+Maintainer: Ken Gilmer <kgilmer@gmail.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 4.1.2
+Homepage: https://github.com/regolith-linux/regolith-desktop
+Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
+
+Package: regolith-gnome-flashback
+Architecture: all
+Depends: ${misc:Depends}, i3-gaps-wm, gnome-flashback, regolith-assets, regolith-i3-config, arc-icon-theme, solarc-theme
+Description: Regolith customized gnome-flashback session

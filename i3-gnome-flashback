@@ -5,8 +5,10 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
-if [ ! -f ~/.regolith-init-flag ]; then
-        echo "Executing regolith session configuration script."
+PKG_VERSION=`dpkg -s i3blocks | grep '^Version:' | awk '{print $2}'`
+
+if [ ! -f ~/.regolith-init-flag-$PKG_VERSION ]; then
+        echo "Executing regolith session configuration script $PKG_VERSION."
 
         # Required for Nautils to work correctly with i3
         gsettings set org.gnome.desktop.background show-desktop-icons false
@@ -17,10 +19,10 @@ if [ ! -f ~/.regolith-init-flag ]; then
         gsettings set org.gnome.desktop.interface icon-theme "Arc"
 
         # Set the lockscreen background
-        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ESP_020323_2050_desktop.jpg"
+        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-lockscreen.jpg"
 
         # Only run this script once per login session.
-        touch ~/.regolith-init-flag
+        touch ~/.regolith-init-flag-$PKG_VERSION
 fi
 
 if [ ! -f ~/.config/i3-regolith/config ]; then

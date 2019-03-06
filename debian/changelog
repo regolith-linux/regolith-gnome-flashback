@@ -1,3 +1,15 @@
+regolith-gnome-flashback (1.14-1ubuntu2) bionic; urgency=medium
+
+  * Updated wm dependency again. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 03 Mar 2019 15:26:11 -0800
+
+regolith-gnome-flashback (1.14-1ubuntu1) bionic; urgency=medium
+
+  * Updated wm dependency. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 02 Mar 2019 19:04:54 -0800
+
 regolith-gnome-flashback (1.14-1ubuntu0) bionic; urgency=medium
 
   * Updated lock screen.  

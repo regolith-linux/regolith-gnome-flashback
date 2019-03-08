@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.14-1ubuntu3) bionic; urgency=medium
+
+  * Remove dependency on deprecated regolith-i3-config. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 07 Mar 2019 20:24:04 -0800
+
 regolith-gnome-flashback (1.14-1ubuntu2) bionic; urgency=medium
 
   * Updated wm dependency again. 

@@ -5,7 +5,7 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
-PKG_VERSION=`dpkg -s i3blocks | grep '^Version:' | awk '{print $2}'`
+PKG_VERSION=`dpkg -s regolith-i3-wm | grep '^Version:' | awk '{print $2}'`
 
 if [ ! -f ~/.regolith-init-flag-$PKG_VERSION ]; then
         echo "Executing regolith session configuration script $PKG_VERSION."

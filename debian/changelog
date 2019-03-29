@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.16-1ubuntu0) bionic; urgency=medium
+
+  * Fix broken dependency on i3blocks. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 17 Mar 2019 22:34:33 -0700
+
 regolith-gnome-flashback (1.15-1ubuntu0) bionic; urgency=medium
 
   * Update i3 config file due to regolith-i3-config deprecation. 

@@ -1,3 +1,10 @@
+regolith-gnome-flashback (1.18-1ubuntu1) bionic; urgency=medium
+
+  * Remap keyboard switch keybindings to avoid conflict w/ i3wm.
+  * Some wm init script polish. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 25 May 2019 07:19:23 -0700
+
 regolith-gnome-flashback (1.17-1ubuntu0) bionic; urgency=medium
 
   * Use self package version for script exec bump logic.

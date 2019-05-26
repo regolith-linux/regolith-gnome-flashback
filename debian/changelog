@@ -1,4 +1,18 @@
-regolith-gnome-flashback (1.18-1ubuntu1) bionic; urgency=medium
+regolith-gnome-flashback (1.21-1ubuntu1) bionic; urgency=medium
+
+  * Fix typo in previous version.
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 26 May 2019 09:34:33 -0700
+
+regolith-gnome-flashback (1.20-1ubuntu1) bionic; urgency=medium
+
+  * Fix Disco wallpaper issue with gnome-flashback.
+  * Minor script cleanup.
+  * Move session init flag to .config/i3-regolith. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 26 May 2019 08:26:26 -0700
+
+regolith-gnome-flashback (1.19-1ubuntu1) bionic; urgency=medium
 
   * Remap keyboard switch keybindings to avoid conflict w/ i3wm.
   * Some wm init script polish. 

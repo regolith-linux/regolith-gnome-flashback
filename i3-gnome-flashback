@@ -6,13 +6,15 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 fi
 
 PKG_VERSION=`dpkg -s regolith-gnome-flashback | grep '^Version:' | awk '{print $2}'`
+UPDATE_FLAG_PATH="~/.config/i3-regolith/config-flag-$PKG_VERSION"
 
 # The following stanza is for Regolith-specific changes to default Ubuntu settings.
-if [ ! -f ~/.regolith-init-flag-$PKG_VERSION ]; then
-        echo "Executing regolith session configuration script $PKG_VERSION."
+if [ ! -f $UPDATE_FLAG_PATH ]; then
+        echo "Executing regolith session configuration script for $PKG_VERSION."
 
-        # Required for Nautils to work correctly with i3
+        # Required for i3 and gnome-shell to coexist
         gsettings set org.gnome.desktop.background show-desktop-icons false
+        gsettings set org.gnome.gnome-flashback desktop-background false
 
         # Remap default keyboard switch keybindings to avoid collision w/ i3
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
@@ -26,8 +28,8 @@ if [ ! -f ~/.regolith-init-flag-$PKG_VERSION ]; then
         # Set the lockscreen background
         gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-lockscreen.jpg"
 
-        # Only run this script once per login session.
-        touch ~/.regolith-init-flag-$PKG_VERSION
+        # Only run this script once per user login session.
+        touch $UPDATE_FLAG_PATH
 fi
 
 if [ ! -f ~/.config/i3-regolith/config ]; then

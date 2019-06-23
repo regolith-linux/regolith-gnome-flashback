@@ -5,8 +5,9 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
+REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
 PKG_VERSION=`dpkg -s regolith-gnome-flashback | grep '^Version:' | awk '{print $2}'`
-UPDATE_FLAG_PATH="~/.config/i3-regolith/config-flag-$PKG_VERSION"
+UPDATE_FLAG_PATH="$REGOLITH_I3_CONFIG_DIR/config-flag-$PKG_VERSION"
 
 # The following stanza is for Regolith-specific changes to default Ubuntu settings.
 if [ ! -f $UPDATE_FLAG_PATH ]; then
@@ -14,7 +15,6 @@ if [ ! -f $UPDATE_FLAG_PATH ]; then
 
         # Required for i3 and gnome-shell to coexist
         gsettings set org.gnome.desktop.background show-desktop-icons false
-        gsettings set org.gnome.gnome-flashback desktop-background false
 
         # Remap default keyboard switch keybindings to avoid collision w/ i3
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
@@ -25,21 +25,23 @@ if [ ! -f $UPDATE_FLAG_PATH ]; then
         gsettings set org.gnome.desktop.wm.preferences theme "SolArc-Dark"
         gsettings set org.gnome.desktop.interface icon-theme "Arc"
 
-        # Set the lockscreen background
-        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-lockscreen.jpg"
+        # Set the wallpaper
+        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ESP_020528_1750_desktop.jpg"
 
-        # Only run this script once per user login session.
+        # Only run this script once per package version per user login session.
         touch $UPDATE_FLAG_PATH
 fi
 
-if [ ! -f ~/.config/i3-regolith/config ]; then
+REGOLITH_I3_CONFIG_FILE="$REGOLITH_I3_CONFIG_DIR/config"
+
+if [ ! -f $REGOLITH_I3_CONFIG_FILE ]; then
         echo "Copying default Regolith i3 configuration to user directory."
-        mkdir -p ~/.config/i3-regolith
-        cp /etc/i3/config ~/.config/i3-regolith/config
+        mkdir -p $REGOLITH_I3_CONFIG_DIR
+        cp /etc/i3/config $REGOLITH_I3_CONFIG_FILE
 fi
 
 # Launch i3wm with the Regolith configuration
-i3  -c ~/.config/i3-regolith/config
+i3 -c $REGOLITH_I3_CONFIG_FILE
 
 # Close session when i3 exits.
 if [ -n "$DESKTOP_AUTOSTART_ID" ]; then

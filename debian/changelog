@@ -1,3 +1,16 @@
+regolith-gnome-flashback (1.23-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Remove invalid setting for lockscreen.
+  * Set gnome wallpaper to regolith default.
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 22 Jun 2019 21:42:47 -0700
+
+regolith-gnome-flashback (1.22-1ubuntu1) bionic; urgency=medium
+
+  * Cleanup of i3-gnome init script. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 26 May 2019 15:21:52 -0700
+
 regolith-gnome-flashback (1.21-1ubuntu1) bionic; urgency=medium
 
   * Fix typo in previous version.

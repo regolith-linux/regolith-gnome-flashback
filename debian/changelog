@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.24-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Explicitly set desktop wallpaper to gnome-flashback. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 22 Jun 2019 22:51:24 -0700
+
 regolith-gnome-flashback (1.23-1ubuntu1ppa1) bionic; urgency=medium
 
   * Remove invalid setting for lockscreen.

@@ -9,7 +9,7 @@ REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
 PKG_VERSION=`dpkg -s regolith-gnome-flashback | grep '^Version:' | awk '{print $2}'`
 UPDATE_FLAG_PATH="$REGOLITH_I3_CONFIG_DIR/config-flag-$PKG_VERSION"
 
-# The following stanza is for Regolith-specific changes to default Ubuntu settings.
+# The following stanza is to set Regolith-specific changes to default Ubuntu settings.
 if [ ! -f $UPDATE_FLAG_PATH ]; then
         echo "Executing regolith session configuration script for $PKG_VERSION."
 

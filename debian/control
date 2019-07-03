@@ -9,5 +9,5 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 
 Package: regolith-gnome-flashback
 Architecture: any
-Depends: ${misc:Depends}, regolith-i3-wm, gnome-flashback, regolith-assets, arc-icon-theme, moka-icon-theme, solarc-theme
+Depends: ${misc:Depends}, regolith-i3-wm, gnome-flashback, regolith-assets, regolith-styles, arc-icon-theme, moka-icon-theme, solarc-theme, x11-xserver-utils
 Description: Regolith customized gnome-flashback session

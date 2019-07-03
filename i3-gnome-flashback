@@ -9,6 +9,32 @@ REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
 PKG_VERSION=`dpkg -s regolith-gnome-flashback | grep '^Version:' | awk '{print $2}'`
 UPDATE_FLAG_PATH="$REGOLITH_I3_CONFIG_DIR/config-flag-$PKG_VERSION"
 
+# If new version of regolith-gnome-flashback, stage Xresources.
+if [ ! -f $UPDATE_FLAG_PATH ]; then
+        if [ -f /usr/share/regolith-styles/root ]; then
+                if [ ! -f ~/.Xresources-regolith ]; then
+                        cp /usr/share/regolith-styles/root ~/.Xresources-regolith
+                        if [ ! -d ~/.Xresources.d ]; then
+                                mkdir ~/.Xresources.d
+                        fi
+                        cp /usr/share/regolith-styles/* ~/.Xresources.d/
+                        rm ~/.Xresources.d/root
+                fi
+        fi
+fi
+
+# Load Xresources
+if [ -f ~/.Xresources ]; then 
+        echo "Loading default Xresources"
+        xrdb ~/.Xresources
+fi
+
+# Load Regolith Xresources
+if [ -f ~/.Xresources-regolith ]; then 
+        echo "Loading regolith Xresources"
+        xrdb ~/.Xresources-regolith
+fi
+
 # The following stanza is to set Regolith-specific changes to default Ubuntu settings.
 if [ ! -f $UPDATE_FLAG_PATH ]; then
         echo "Executing regolith session configuration script for $PKG_VERSION."

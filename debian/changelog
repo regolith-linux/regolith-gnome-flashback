@@ -1,3 +1,15 @@
+regolith-gnome-flashback (1.27-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Gate Xresource file staging on package upgrade. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Tue, 02 Jul 2019 20:20:48 -0700
+
+regolith-gnome-flashback (1.26-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Add experimental integration for Xresources. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 30 Jun 2019 10:05:24 -0700
+
 regolith-gnome-flashback (1.25-1ubuntu1ppa1) bionic; urgency=medium
 
   * Metadata change for arm builds.

@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.28-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Fix Xresources loading to merge with existing if set. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 07 Jul 2019 22:39:25 -0700
+
 regolith-gnome-flashback (1.27-1ubuntu1ppa1) bionic; urgency=medium
 
   * Gate Xresource file staging on package upgrade. 

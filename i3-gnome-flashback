@@ -26,13 +26,13 @@ fi
 # Load Xresources
 if [ -f ~/.Xresources ]; then 
         echo "Loading default Xresources"
-        xrdb ~/.Xresources
+        xrdb -merge ~/.Xresources
 fi
 
 # Load Regolith Xresources
 if [ -f ~/.Xresources-regolith ]; then 
         echo "Loading regolith Xresources"
-        xrdb ~/.Xresources-regolith
+        xrdb -merge ~/.Xresources-regolith
 fi
 
 # The following stanza is to set Regolith-specific changes to default Ubuntu settings.

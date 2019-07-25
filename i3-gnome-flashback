@@ -60,12 +60,20 @@ if [ ! -f $UPDATE_FLAG_PATH ]; then
         touch $UPDATE_FLAG_PATH
 fi
 
+# Stage i3 config file
 REGOLITH_I3_CONFIG_FILE="$REGOLITH_I3_CONFIG_DIR/config"
-
 if [ ! -f $REGOLITH_I3_CONFIG_FILE ]; then
         echo "Copying default Regolith i3 configuration to user directory."
         mkdir -p $REGOLITH_I3_CONFIG_DIR
         cp /etc/i3/config $REGOLITH_I3_CONFIG_FILE
+fi
+
+# Stage i3xrocks file
+REGOLITH_I3XROCKS_CONFIG_DIR="$HOME/.config/i3xrocks"
+if [ ! -d $REGOLITH_I3XROCKS_CONFIG_DIR ]; then
+        echo "Copying default i3xrocks configuration to user directory."
+        mkdir -p $REGOLITH_I3XROCKS_CONFIG_DIR
+        cp /usr/share/i3xrocks/* REGOLITH_I3XROCKS_CONFIG_DIR
 fi
 
 # Launch i3wm with the Regolith configuration

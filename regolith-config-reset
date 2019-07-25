@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Remove the flag that prevents Regolith from setting up upon login.
-mv -v ~/.regolith-init-flag-* /tmp/
-
-# Remove the i3wm configuration. Regolith session init script will replace w/ default upon next login.
-mv -v ~/.config/i3-regolith/config /tmp/
-
-echo "Regolith config files moved to /tmp.  Log back in to reset configuration."

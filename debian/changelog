@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.31-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Fix login bug that prevents i3 from starting. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 25 Jul 2019 19:01:46 -0700
+
 regolith-gnome-flashback (1.30-1ubuntu1ppa1) bionic; urgency=medium
 
   * Remove regolith-config-reset, replaced via new script in 

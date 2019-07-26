@@ -5,10 +5,10 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
-REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
-
 # Initialize Regolith session
 /bin/bash /usr/bin/regolith-config-init.sh
+
+REGOLITH_I3_CONFIG_FILE="$HOME/.config/i3-regolith/config"
 
 # Launch i3wm with the Regolith configuration
 i3 -c $REGOLITH_I3_CONFIG_FILE

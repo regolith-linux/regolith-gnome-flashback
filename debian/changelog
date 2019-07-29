@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.33-1ubuntu1ppa1) bionic; urgency=medium
+
+  * Version i3 config file per i3 version. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 28 Jul 2019 10:38:07 -0700
+
 regolith-gnome-flashback (1.31-1ubuntu1ppa1) bionic; urgency=medium
 
   * Fix login bug that prevents i3 from starting. 

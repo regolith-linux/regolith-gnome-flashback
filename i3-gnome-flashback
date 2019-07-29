@@ -8,7 +8,9 @@ fi
 # Initialize Regolith session
 /bin/bash /usr/bin/regolith-config-init.sh
 
-REGOLITH_I3_CONFIG_FILE="$HOME/.config/i3-regolith/config"
+REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
+I3_PKG_VERSION=`dpkg -s regolith-i3-wm | grep '^Version:' | awk '{print $2}'`
+REGOLITH_I3_CONFIG_FILE="$REGOLITH_I3_CONFIG_DIR/config-$I3_PKG_VERSION"
 
 # Launch i3wm with the Regolith configuration
 i3 -c $REGOLITH_I3_CONFIG_FILE

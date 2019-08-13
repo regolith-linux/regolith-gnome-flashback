@@ -9,7 +9,11 @@ fi
 /bin/bash /usr/bin/regolith-config-init.sh
 
 REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
-I3_PKG_VERSION=`dpkg -s regolith-i3-wm | grep '^Version:' | awk '{print $2}'`
+if [ -f /etc/i3/config-version ]; then
+        I3_PKG_VERSION=`cat /etc/i3/config-version`
+else
+        I3_PKG_VERSION=`dpkg -s regolith-i3-wm | grep '^Version:' | awk '{print $2}'`
+fi
 REGOLITH_I3_CONFIG_FILE="$REGOLITH_I3_CONFIG_DIR/config-$I3_PKG_VERSION"
 
 # Launch i3wm with the Regolith configuration

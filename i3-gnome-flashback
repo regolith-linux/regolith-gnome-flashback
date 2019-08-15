@@ -5,18 +5,52 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
-# Initialize Regolith session
-/bin/bash /usr/bin/regolith-config-init.sh
-
-REGOLITH_I3_CONFIG_DIR="$HOME/.config/i3-regolith"
-if [ -f /etc/i3/config-version ]; then
-        I3_PKG_VERSION=`cat /etc/i3/config-version`
+# Load Xresources
+if [ -f "~/.Xresources-regolith" ]; then
+        xrdb -merge ~/.Xresources-regolith
 else
-        I3_PKG_VERSION=`dpkg -s regolith-i3-wm | grep '^Version:' | awk '{print $2}'`
+        xrdb -merge /etc/regolith/styles/root
 fi
-REGOLITH_I3_CONFIG_FILE="$REGOLITH_I3_CONFIG_DIR/config-$I3_PKG_VERSION"
+
+# Determine i3 config file
+if [ -f "~/.config/regolith/config" ]; then
+        REGOLITH_I3_CONFIG_FILE="~/.config/regolith/i3/config"
+elif [ -f "/etc/regolith/i3/config" ]; then
+        REGOLITH_I3_CONFIG_FILE="/etc/regolith/i3/config"
+else 
+        REGOLITH_I3_CONFIG_FILE="/etc/i3/config"
+fi
+
+# The following stanza is to set Regolith-specific changes to default Ubuntu settings.
+UPDATE_FLAG_DIR="~/.config/regolith"
+UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/flag-gnome-config"
+if [ ! -f $UPDATE_FLAG_FILE ]; then
+        echo "Executing regolith session configuration script for $PKG_VERSION."
+
+        # Required for i3 and gnome-shell to coexist
+        gsettings set org.gnome.desktop.background show-desktop-icons false
+        gsettings set org.gnome.gnome-flashback desktop-background true
+
+
+        # Remap default keyboard switch keybindings to avoid collision w/ i3
+        gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
+        gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
+
+        # Set the theme
+        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme SolArc-Dark`"
+        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme SolArc-Dark`"
+        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Arc`"
+
+        # Set the wallpaper
+        gsettings set org.gnome.desktop.background picture-uri `xrescat gnome.wallpaper.uri "file:///usr/share/backgrounds/ESP_020528_1750_desktop.jpg"`
+
+        # Only run this script once system.
+        mkdir -p $UPDATE_FLAG_DIR
+        touch $UPDATE_FLAG_PATH
+fi
 
 # Launch i3wm with the Regolith configuration
+echo "Launching i3-gaps with $REGOLITH_I3_CONFIG_FILE"
 i3 -c $REGOLITH_I3_CONFIG_FILE
 
 # Close session when i3 exits.

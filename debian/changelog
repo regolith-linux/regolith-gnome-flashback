@@ -1,3 +1,11 @@
+regolith-gnome-flashback (1.35-1ubuntu1ppa1) disco; urgency=medium
+
+  * Remove dependency on regolith-scripts
+  * Implement changes for
+    https://github.com/regolith-linux/regolith-desktop/issues/91 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Wed, 14 Aug 2019 22:54:13 -0700
+
 regolith-gnome-flashback (1.34-1ubuntu1ppa1) disco; urgency=medium
 
   * Prefer pinned regolith-i3 version to dpkg version for config staging.

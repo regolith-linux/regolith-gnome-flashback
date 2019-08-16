@@ -1,3 +1,10 @@
+regolith-gnome-flashback (1.37-1ubuntu1ppa1) disco; urgency=medium
+
+  * Script cleanup
+  * Fix for gnome settings flag 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Fri, 16 Aug 2019 08:59:48 -0700
+
 regolith-gnome-flashback (1.36-1ubuntu1ppa1) disco; urgency=medium
 
   * Remove wallpaper from Xresources to avoid conflict with user settings.

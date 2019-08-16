@@ -1,4 +1,14 @@
 #!/bin/sh
+# This script initializes Regolith and launches i3.
+
+# File Locations - Optional User Overrides
+USER_XRESOURCE_FILE="$HOME/.Xresources-regolith"
+USER_I3_CONFIG_FILE="$HOME/.config/regolith/i3/config"
+
+# File Locations - System Defaults
+DEFAULT_XRESOURCE_FILE="/etc/regolith/styles/root"
+DEFAULT_I3_CONFIG_FILE="/etc/regolith/i3/config"
+BASELINE_I3_CONFIG_FILE="/etc/i3/config"
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.
 if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
@@ -6,31 +16,30 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 fi
 
 # Load Xresources
-if [ -f "$HOME/.Xresources-regolith" ]; then
-        xrdb -merge $HOME/.Xresources-regolith
+if [ -f "$USER_XRESOURCE_FILE" ]; then
+        xrdb -merge $USER_XRESOURCE_FILE
 else
-        xrdb -merge /etc/regolith/styles/root
+        xrdb -merge $DEFAULT_XRESOURCE_FILE
 fi
 
 # Determine i3 config file
-if [ -f "$HOME/.config/regolith/config" ]; then
-        REGOLITH_I3_CONFIG_FILE="~/.config/regolith/i3/config"
-elif [ -f "/etc/regolith/i3/config" ]; then
-        REGOLITH_I3_CONFIG_FILE="/etc/regolith/i3/config"
+if [ -f "$USER_I3_CONFIG_FILE" ]; then
+        REGOLITH_I3_CONFIG_FILE=$USER_I3_CONFIG_FILE
+elif [ -f "$DEFAULT_I3_CONFIG_FILE" ]; then
+        REGOLITH_I3_CONFIG_FILE=$DEFAULT_I3_CONFIG_FILE
 else 
-        REGOLITH_I3_CONFIG_FILE="/etc/i3/config"
+        REGOLITH_I3_CONFIG_FILE=$BASELINE_I3_CONFIG_FILE
 fi
 
 # The following stanza is to set Regolith-specific changes over default Ubuntu settings.
-UPDATE_FLAG_DIR="$HOME/.config/regolith"
-UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/flag-first-time-setup"
-if [ ! -f $UPDATE_FLAG_FILE ]; then
-        echo "Executing regolith session configuration script for $PKG_VERSION."
+UPDATE_FLAG_DIR="$HOME/.config/regolith/flags"
+UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup"
+if [ ! -f "$UPDATE_FLAG_FILE" ]; then
+        echo "Executing Regolith session configuration script."
 
         # Required for i3 and gnome-shell to coexist
         gsettings set org.gnome.desktop.background show-desktop-icons false
         gsettings set org.gnome.gnome-flashback desktop-background true
-
 
         # Remap default keyboard switch keybindings to avoid collision w/ i3
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
@@ -41,7 +50,7 @@ if [ ! -f $UPDATE_FLAG_FILE ]; then
 
         # Only run this script once per install of Regolith.
         mkdir -p $UPDATE_FLAG_DIR
-        touch $UPDATE_FLAG_PATH
+        touch $UPDATE_FLAG_FILE
 fi
 
 # Set the theme

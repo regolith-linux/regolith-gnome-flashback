@@ -1,3 +1,12 @@
+regolith-gnome-flashback (1.36-1ubuntu1ppa1) disco; urgency=medium
+
+  * Remove wallpaper from Xresources to avoid conflict with user settings.
+  * Fix bug with home directory file test.
+  * Always set gtk theme and icon theme to ensure Xresources values
+    are used on login. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 15 Aug 2019 20:52:37 -0700
+
 regolith-gnome-flashback (1.35-1ubuntu1ppa1) disco; urgency=medium
 
   * Remove dependency on regolith-scripts

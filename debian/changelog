@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.38-1ubuntu1ppa1) disco; urgency=medium
+
+  * Load ~/.Xresources if exists. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 18 Aug 2019 09:09:38 -0700
+
 regolith-gnome-flashback (1.37-1ubuntu1ppa1) disco; urgency=medium
 
   * Script cleanup

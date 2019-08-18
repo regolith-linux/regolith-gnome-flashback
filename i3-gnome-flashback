@@ -8,6 +8,9 @@ USER_I3_CONFIG_FILE="$HOME/.config/regolith/i3/config"
 # File Locations - System Defaults
 DEFAULT_XRESOURCE_FILE="/etc/regolith/styles/root"
 DEFAULT_I3_CONFIG_FILE="/etc/regolith/i3/config"
+
+# File Locations - Baseline
+BASELINE_XRESOURCE_FILE="$HOME/.Xresources"
 BASELINE_I3_CONFIG_FILE="/etc/i3/config"
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.
@@ -16,6 +19,9 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 fi
 
 # Load Xresources
+if [ -f "$BASELINE_XRESOURCE_FILE"]; then
+        xrdb -merge $BASELINE_XRESOURCE_FILE
+fi
 if [ -f "$USER_XRESOURCE_FILE" ]; then
         xrdb -merge $USER_XRESOURCE_FILE
 else

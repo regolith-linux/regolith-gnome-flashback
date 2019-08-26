@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.39-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Add app desktop entries for shutdown, reboot, logout. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 25 Aug 2019 19:06:20 -0700
+
 regolith-gnome-flashback (1.38-1ubuntu1ppa1) disco; urgency=medium
 
   * Load ~/.Xresources if exists. 

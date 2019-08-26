@@ -14,5 +14,6 @@ Depends: ${misc:Depends},
     gnome-flashback, 
     regolith-assets, 
     regolith-styles,
-    x11-xserver-utils
+    x11-xserver-utils,
+    gnome-session-bin
 Description: Regolith customized gnome-flashback session

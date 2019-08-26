@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Reboot
+Exec=gnome-session-quit --reboot
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=system-reboot
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;

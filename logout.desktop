@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Logout
+Exec=gnome-session-quit
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=gnome-session-logout
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Shutdown Computer
+Exec=gnome-session-quit --power-off
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=system-shutdown
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;

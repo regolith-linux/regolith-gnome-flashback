@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.41-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Depend on regolith-i3-gaps-config. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Wed, 21 Aug 2019 18:13:49 -0700
+
 regolith-gnome-flashback (1.39-1ubuntu1~ppa1) disco; urgency=medium
 
   * Add app desktop entries for shutdown, reboot, logout. 

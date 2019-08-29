@@ -10,7 +10,7 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-gnome-flashback
 Architecture: any
 Depends: ${misc:Depends}, 
-    regolith-i3-wm, 
+    regolith-i3-gaps-config, 
     gnome-flashback, 
     regolith-assets, 
     regolith-styles,

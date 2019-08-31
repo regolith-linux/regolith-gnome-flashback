@@ -52,7 +52,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
 
         # Set the wallpaper
-        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ESP_020528_1750_desktop.jpg"
+        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-default.jpg"
 
         # Only run this script once per install of Regolith.
         mkdir -p $UPDATE_FLAG_DIR

@@ -1,3 +1,9 @@
+regolith-gnome-flashback (1.42-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Change default wallpaper to a constant filename. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Fri, 30 Aug 2019 21:37:50 -0700
+
 regolith-gnome-flashback (1.41-1ubuntu1~ppa1) disco; urgency=medium
 
   * Depend on regolith-i3-gaps-config. 

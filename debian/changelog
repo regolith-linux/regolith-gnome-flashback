@@ -1,3 +1,17 @@
+regolith-gnome-flashback (1.45-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Add theme and icon to backup.  
+  * Fix theme and icon defaults. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 31 Aug 2019 13:52:52 -0700
+
+regolith-gnome-flashback (1.44-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Escape string values in backup script.
+  * Fix comment instructions in backup script. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 31 Aug 2019 09:07:15 -0700
+
 regolith-gnome-flashback (1.43-1ubuntu1~ppa1) disco; urgency=medium
 
   * Backup existing gnome settings before writing them.

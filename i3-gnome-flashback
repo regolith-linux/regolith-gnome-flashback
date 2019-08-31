@@ -48,12 +48,15 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
 
         # Backing existing GNOME settings if possible
         if [ ! -f "$BACKUP_GNOME_SETTINGS" ]; then
-                echo "# The following settings were saved by Regolith when configuring Gnome."
+                echo "# The following settings were saved by Regolith when configuring Gnome. Execute this file or run the commands manually to restore them." >> $BACKUP_GNOME_SETTINGS
                 echo "gsettings set org.gnome.desktop.background show-desktop-icons `gsettings get org.gnome.desktop.background show-desktop-icons`" >> $BACKUP_GNOME_SETTINGS
                 echo "gsettings set org.gnome.gnome-flashback desktop-background `gsettings get org.gnome.gnome-flashback desktop-background`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source `gsettings get org.gnome.desktop.wm.keybindings switch-input-source`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward `gsettings get org.gnome.desktop.wm.keybindings switch-input-source-backward`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.background picture-uri `gsettings get org.gnome.desktop.background picture-uri`" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source \"`gsettings get org.gnome.desktop.wm.keybindings switch-input-source`\"" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward \"`gsettings get org.gnome.desktop.wm.keybindings switch-input-source-backward`\"" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.background picture-uri \"`gsettings get org.gnome.desktop.background picture-uri`\"" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.interface gtk-theme `gsettings get org.gnome.desktop.interface gtk-theme`" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.wm.preferences theme `gsettings get org.gnome.desktop.wm.preferences theme`" >> $BACKUP_GNOME_SETTINGS
+                echo "gsettings set org.gnome.desktop.interface icon-theme `gsettings get org.gnome.desktop.interface icon-theme`" >> $BACKUP_GNOME_SETTINGS
         fi
 
         # Required for i3 and gnome-shell to coexist
@@ -76,9 +79,9 @@ XRES_GTK_THEME=`xrescat gnome.gtk.theme`
 CURRENT_GTK_THEME=`gsettings get org.gnome.desktop.interface`
 if [ "$XRES_GTK_THEME" != "$CURRENT_GTK_THEME" ]; then
         # Set the theme from Xresources values.
-        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme SolArc-Dark`"
-        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme SolArc-Dark`"
-        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Arc`"
+        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme Nordic`"
+        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme Nordic`"
+        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Paper`"
 fi
 
 # Launch i3wm with the Regolith configuration

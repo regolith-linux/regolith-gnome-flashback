@@ -1,3 +1,11 @@
+regolith-gnome-flashback (1.43-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Backup existing gnome settings before writing them.
+  * Add comments for readability.
+  * Only set gtk theme if Xresources values differ. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 31 Aug 2019 08:37:17 -0700
+
 regolith-gnome-flashback (1.42-1ubuntu1~ppa1) disco; urgency=medium
 
   * Change default wallpaper to a constant filename. 

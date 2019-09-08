@@ -16,4 +16,5 @@ Depends: ${misc:Depends},
     regolith-styles,
     x11-xserver-utils,
     gnome-session-bin
+Conflicts: session-shortcuts
 Description: Regolith customized gnome-flashback session

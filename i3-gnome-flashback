@@ -22,11 +22,15 @@ if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
 fi
 
 # Load Xresources
-if [ -f "$BASELINE_XRESOURCE_FILE"]; then
+if [ -f "$BASELINE_XRESOURCE_FILE" ]; then
         xrdb -merge $BASELINE_XRESOURCE_FILE
 fi
-if [ -f "$USER_XRESOURCE_FILE" ]; then
-        xrdb -merge $USER_XRESOURCE_FILE
+
+# Avoid loading an early version of the Regolith Xresource file
+BAD_XRES_HASH="6797c718fc4767653878ef9db5f68017"
+HASH=`md5sum $USER_XRESOURCE_FILE | cut -d " " -f1`
+if [ -f "$USER_XRESOURCE_FILE" -a "$HASH" != "$BAD_XRES_HASH" ]; then
+        xrdb -merge $USER_XRESOURCE_FILE 
 else
         xrdb -merge $DEFAULT_XRESOURCE_FILE
 fi

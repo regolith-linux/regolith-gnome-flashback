@@ -1,3 +1,10 @@
+regolith-gnome-flashback (1.46-1ubuntu1~ppa1) disco; urgency=medium
+
+  * Avoid loading a stock version of Regolith Xresources that
+    is not compatible with R1.2. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 12 Sep 2019 21:11:24 -0700
+
 regolith-gnome-flashback (1.45-1ubuntu1~ppa2) disco; urgency=medium
 
   * Add conflicts for session-shortcuts package. 

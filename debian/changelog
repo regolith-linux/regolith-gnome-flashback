@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.0-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Updates for Eoan compatibility. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 14 Sep 2019 20:56:21 -0700
+
 regolith-gnome-flashback (1.46-1ubuntu1~ppa1) disco; urgency=medium
 
   * Avoid loading a stock version of Regolith Xresources that

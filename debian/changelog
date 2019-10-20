@@ -1,3 +1,11 @@
+regolith-gnome-flashback (2.1-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Manually merge fixes from
+    https://github.com/deuill/i3-gnome-flashback/commit/c7356953499c3dd6ab212b6ec026d1ecd521424a
+    to support Ubuntu 19.10. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sat, 19 Oct 2019 19:53:49 -0700
+
 regolith-gnome-flashback (2.0-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Updates for Eoan compatibility. 

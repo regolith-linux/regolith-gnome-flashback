@@ -52,7 +52,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
 
         # Backing existing GNOME settings if possible
         if [ ! -f "$BACKUP_GNOME_SETTINGS" ]; then
-                echo "# The following settings were saved by Regolith when configuring Gnome. Execute this file or run the commands manually to restore them." >> $BACKUP_GNOME_SETTINGS
+                echo "# The following settings were changed by Regolith when configuring your system. Execute this file or run the commands manually to restore them." >> $BACKUP_GNOME_SETTINGS
                 echo "gsettings set org.gnome.desktop.background show-desktop-icons `gsettings get org.gnome.desktop.background show-desktop-icons`" >> $BACKUP_GNOME_SETTINGS
                 echo "gsettings set org.gnome.gnome-flashback desktop-background `gsettings get org.gnome.gnome-flashback desktop-background`" >> $BACKUP_GNOME_SETTINGS
                 echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source \"`gsettings get org.gnome.desktop.wm.keybindings switch-input-source`\"" >> $BACKUP_GNOME_SETTINGS
@@ -66,6 +66,9 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         # Required for i3 and gnome-shell to coexist
         gsettings set org.gnome.desktop.background show-desktop-icons false
         gsettings set org.gnome.gnome-flashback desktop-background true
+
+        # Disable built-in notification system for Rofication
+        gsettings set org.gnome.gnome-flashback notifications false
 
         # Remap default keyboard switch keybindings to avoid collision w/ i3
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"

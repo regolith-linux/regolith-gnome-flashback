@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.2.0-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Disable gnome-flashback notifications.
+  * Minor tweaks to comments in restore script. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Fri, 29 Nov 2019 15:55:56 -0800
+
 regolith-gnome-flashback (2.1-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Manually merge fixes from

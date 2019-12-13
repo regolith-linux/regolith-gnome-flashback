@@ -83,7 +83,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
 fi
 
 XRES_GTK_THEME=`xrescat gnome.gtk.theme`
-CURRENT_GTK_THEME=`gsettings get org.gnome.desktop.interface`
+CURRENT_GTK_THEME=`gsettings get org.gnome.desktop.interface gtk-theme`
 if [ "$XRES_GTK_THEME" != "$CURRENT_GTK_THEME" ]; then
         # Set the theme from Xresources values.
         gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme Nordic`"

@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.2.2-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Check if Xresources changed to refresh UI. 
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Sun, 29 Dec 2019 00:29:58 -0800
+
 regolith-gnome-flashback (2.2.1-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Fix bug with checking GTK theme on start. 

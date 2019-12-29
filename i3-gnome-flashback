@@ -63,7 +63,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
                 echo "gsettings set org.gnome.desktop.interface icon-theme `gsettings get org.gnome.desktop.interface icon-theme`" >> $BACKUP_GNOME_SETTINGS
         fi
 
-        # Required for i3 and gnome-shell to coexist
+        # Required for i3 and gnome to coexist
         gsettings set org.gnome.desktop.background show-desktop-icons false
         gsettings set org.gnome.gnome-flashback desktop-background true
 
@@ -74,21 +74,26 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
         gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
 
-        # Set the wallpaper
-        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-default.jpg"
-
         # Only run this script once per install of Regolith.
         mkdir -p $UPDATE_FLAG_DIR
         touch $UPDATE_FLAG_FILE
 fi
 
-XRES_GTK_THEME=`xrescat gnome.gtk.theme`
-CURRENT_GTK_THEME=`gsettings get org.gnome.desktop.interface gtk-theme`
-if [ "$XRES_GTK_THEME" != "$CURRENT_GTK_THEME" ]; then
+UI_REFRESH_FLAG_FILE="$UPDATE_FLAG_DIR/ui-fingerprint"
+KNOWN_FINGERPRINT=$(<$UI_REFRESH_FLAG_FILE)
+# Generate hash from Xresources that don't begin with 'X'.
+CURRENT_FINGERPRINT=$(xrdb -query | grep -v ^X | md5sum | cut -d' ' -f1)
+if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT ]]; then
         # Set the theme from Xresources values.
-        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme Nordic`"
-        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme Nordic`"
-        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Paper`"
+        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme Adwaita`"
+        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme Adwaita`"
+        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Adwaita`"
+
+        # Set the wallpaper
+        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-default.jpg"
+
+        # Save current fingerprint to avoid unnecessary configuration.
+        echo $CURRENT_FINGERPRINT > $UI_REFRESH_FLAG_FILE
 fi
 
 # Launch i3wm with the Regolith configuration

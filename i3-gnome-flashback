@@ -90,7 +90,10 @@ if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT ]]; then
         gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Adwaita`"
 
         # Set the wallpaper
-        gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/regolith-default.jpg"
+        WALLPAPER_FILE=$(xrescat gnome.wallpaper)
+        if [[ ! -z $WALLPAPER_FILE ]]; then
+                gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER_FILE"
+        fi
 
         # Save current fingerprint to avoid unnecessary configuration.
         echo $CURRENT_FINGERPRINT > $UI_REFRESH_FLAG_FILE

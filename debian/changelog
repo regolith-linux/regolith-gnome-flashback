@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.2.5-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Fix bug which caused gtk theme and background to be initially set. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Wed, 15 Jan 2020 22:32:38 -0800
+
 regolith-gnome-flashback (2.2.4-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Migrate to new PPA. 

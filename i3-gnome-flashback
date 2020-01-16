@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script initializes Regolith and launches i3.
 
 # File Locations - Optional User Overrides

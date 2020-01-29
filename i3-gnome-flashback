@@ -46,7 +46,7 @@ fi
 
 # The following stanza is to set Regolith-specific changes over default Ubuntu settings.
 UPDATE_FLAG_DIR="$HOME/.config/regolith/flags"
-UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup"
+UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup-r1-3"
 if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         echo "Executing Regolith session configuration script."
 

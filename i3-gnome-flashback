@@ -4,6 +4,8 @@
 # File Locations - Optional User Overrides
 USER_XRESOURCE_FILE="$HOME/.Xresources-regolith"
 USER_I3_CONFIG_FILE="$HOME/.config/regolith/i3/config"
+USER_XRESOURCE_OVERRIDE_FILE="$HOME/.config/regolith/Xresources"
+USER_XRESOURCE_SEARCH_PATH="$HOME/.config/regolith/Xresources.d"
 
 # File Locations - System Defaults
 DEFAULT_XRESOURCE_FILE="/etc/regolith/styles/root"
@@ -18,65 +20,70 @@ BACKUP_GNOME_SETTINGS="$HOME/.regolith-gnome-backup"
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.
 if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
-	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
+    dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3-gnome" "string:$DESKTOP_AUTOSTART_ID"
 fi
 
 # Load Xresources
 if [ -f "$BASELINE_XRESOURCE_FILE" ]; then
-        xrdb -merge $BASELINE_XRESOURCE_FILE
+    xrdb -merge $BASELINE_XRESOURCE_FILE
 fi
 
 # Avoid loading an early version of the Regolith Xresource file
 BAD_XRES_HASH="6797c718fc4767653878ef9db5f68017"
-HASH=`md5sum $USER_XRESOURCE_FILE | cut -d " " -f1`
+HASH=$(md5sum $USER_XRESOURCE_FILE | cut -d " " -f1)
 if [ -f "$USER_XRESOURCE_FILE" -a "$HASH" != "$BAD_XRES_HASH" ]; then
-        xrdb -merge $USER_XRESOURCE_FILE 
+    xrdb -I$USER_XRESOURCE_SEARCH_PATH -merge $USER_XRESOURCE_FILE
 else
-        xrdb -merge $DEFAULT_XRESOURCE_FILE
+    xrdb -merge $DEFAULT_XRESOURCE_FILE
+fi
+
+# Check for user overrides of Xresources
+if [ -f "$USER_XRESOURCE_OVERRIDE_FILE" ]; then
+    xrdb -I$USER_XRESOURCE_SEARCH_PATH -merge $USER_XRESOURCE_OVERRIDE_FILE
 fi
 
 # Determine i3 config file
 if [ -f "$USER_I3_CONFIG_FILE" ]; then
-        REGOLITH_I3_CONFIG_FILE=$USER_I3_CONFIG_FILE
+    REGOLITH_I3_CONFIG_FILE=$USER_I3_CONFIG_FILE
 elif [ -f "$DEFAULT_I3_CONFIG_FILE" ]; then
-        REGOLITH_I3_CONFIG_FILE=$DEFAULT_I3_CONFIG_FILE
-else 
-        REGOLITH_I3_CONFIG_FILE=$BASELINE_I3_CONFIG_FILE
+    REGOLITH_I3_CONFIG_FILE=$DEFAULT_I3_CONFIG_FILE
+else
+    REGOLITH_I3_CONFIG_FILE=$BASELINE_I3_CONFIG_FILE
 fi
 
 # The following stanza is to set Regolith-specific changes over default Ubuntu settings.
 UPDATE_FLAG_DIR="$HOME/.config/regolith/flags"
 UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup-r1-3"
 if [ ! -f "$UPDATE_FLAG_FILE" ]; then
-        echo "Executing Regolith session configuration script."
+    echo "Executing Regolith session configuration script."
 
-        # Backing existing GNOME settings if possible
-        if [ ! -f "$BACKUP_GNOME_SETTINGS" ]; then
-                echo "# The following settings were changed by Regolith when configuring your system. Execute this file or run the commands manually to restore them." >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.background show-desktop-icons `gsettings get org.gnome.desktop.background show-desktop-icons`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.gnome-flashback desktop-background `gsettings get org.gnome.gnome-flashback desktop-background`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source \"`gsettings get org.gnome.desktop.wm.keybindings switch-input-source`\"" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward \"`gsettings get org.gnome.desktop.wm.keybindings switch-input-source-backward`\"" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.background picture-uri \"`gsettings get org.gnome.desktop.background picture-uri`\"" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.interface gtk-theme `gsettings get org.gnome.desktop.interface gtk-theme`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.wm.preferences theme `gsettings get org.gnome.desktop.wm.preferences theme`" >> $BACKUP_GNOME_SETTINGS
-                echo "gsettings set org.gnome.desktop.interface icon-theme `gsettings get org.gnome.desktop.interface icon-theme`" >> $BACKUP_GNOME_SETTINGS
-        fi
+    # Backing existing GNOME settings if possible
+    if [ ! -f "$BACKUP_GNOME_SETTINGS" ]; then
+        echo "# The following settings were changed by Regolith when configuring your system. Execute this file or run the commands manually to restore them." >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.background show-desktop-icons $(gsettings get org.gnome.desktop.background show-desktop-icons)" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.gnome-flashback desktop-background $(gsettings get org.gnome.gnome-flashback desktop-background)" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source \"$(gsettings get org.gnome.desktop.wm.keybindings switch-input-source)\"" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward \"$(gsettings get org.gnome.desktop.wm.keybindings switch-input-source-backward)\"" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.background picture-uri \"$(gsettings get org.gnome.desktop.background picture-uri)\"" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.interface gtk-theme $(gsettings get org.gnome.desktop.interface gtk-theme)" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.wm.preferences theme $(gsettings get org.gnome.desktop.wm.preferences theme)" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.interface icon-theme $(gsettings get org.gnome.desktop.interface icon-theme)" >>$BACKUP_GNOME_SETTINGS
+    fi
 
-        # Required for i3 and gnome to coexist
-        gsettings set org.gnome.desktop.background show-desktop-icons false
-        gsettings set org.gnome.gnome-flashback desktop-background true
+    # Required for i3 and gnome to coexist
+    gsettings set org.gnome.desktop.background show-desktop-icons false
+    gsettings set org.gnome.gnome-flashback desktop-background true
 
-        # Disable built-in notification system for Rofication
-        gsettings set org.gnome.gnome-flashback notifications false
+    # Disable built-in notification system for Rofication
+    gsettings set org.gnome.gnome-flashback notifications false
 
-        # Remap default keyboard switch keybindings to avoid collision w/ i3
-        gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
-        gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
+    # Remap default keyboard switch keybindings to avoid collision w/ i3
+    gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
+    gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
 
-        # Only run this script once per install of Regolith.
-        mkdir -p $UPDATE_FLAG_DIR
-        touch $UPDATE_FLAG_FILE
+    # Only run this script once per install of Regolith.
+    mkdir -p $UPDATE_FLAG_DIR
+    touch $UPDATE_FLAG_FILE
 fi
 
 UI_REFRESH_FLAG_FILE="$UPDATE_FLAG_DIR/ui-fingerprint"
@@ -84,19 +91,19 @@ KNOWN_FINGERPRINT=$(<$UI_REFRESH_FLAG_FILE)
 # Generate hash from Xresources that don't begin with 'X'.
 CURRENT_FINGERPRINT=$(xrdb -query | grep -v ^X | md5sum | cut -d' ' -f1)
 if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT ]]; then
-        # Set the theme from Xresources values.
-        gsettings set org.gnome.desktop.interface gtk-theme "`xrescat gnome.gtk.theme Adwaita`"
-        gsettings set org.gnome.desktop.wm.preferences theme "`xrescat gnome.wm.theme Adwaita`"
-        gsettings set org.gnome.desktop.interface icon-theme "`xrescat gnome.icon.theme Adwaita`"
+    # Set the theme from Xresources values.
+    gsettings set org.gnome.desktop.interface gtk-theme "$(xrescat gnome.gtk.theme Adwaita)"
+    gsettings set org.gnome.desktop.wm.preferences theme "$(xrescat gnome.wm.theme Adwaita)"
+    gsettings set org.gnome.desktop.interface icon-theme "$(xrescat gnome.icon.theme Adwaita)"
 
-        # Set the wallpaper
-        WALLPAPER_FILE=$(xrescat gnome.wallpaper)
-        if [[ ! -z $WALLPAPER_FILE ]]; then
-                gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER_FILE"
-        fi
+    # Set the wallpaper
+    WALLPAPER_FILE=$(xrescat gnome.wallpaper)
+    if [[ ! -z $WALLPAPER_FILE ]]; then
+        gsettings set org.gnome.desktop.background picture-uri "file://$WALLPAPER_FILE"
+    fi
 
-        # Save current fingerprint to avoid unnecessary configuration.
-        echo $CURRENT_FINGERPRINT > $UI_REFRESH_FLAG_FILE
+    # Save current fingerprint to avoid unnecessary configuration.
+    echo $CURRENT_FINGERPRINT >$UI_REFRESH_FLAG_FILE
 fi
 
 # Launch i3wm with the Regolith configuration
@@ -105,5 +112,5 @@ i3 -c $REGOLITH_I3_CONFIG_FILE
 
 # Close session when i3 exits.
 if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
-	dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.Logout "uint32:1"
+    dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.Logout "uint32:1"
 fi

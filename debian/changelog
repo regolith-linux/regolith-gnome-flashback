@@ -1,3 +1,11 @@
+regolith-gnome-flashback (2.3.0-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Add Xres override mechanism for easier updating of configuration.
+  * Add include directory for Xres files to avoid path specification. 
+  * Script cleanup
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 15 Feb 2020 19:11:07 -0800
+
 regolith-gnome-flashback (2.2.6-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Bump first time setup flag to cause gnome-flashback's notification backend

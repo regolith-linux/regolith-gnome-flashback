@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.4.0-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Predicate breaking gnome-session parameter in script, allowing single
+    package version for 18.04 and 19.04. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 18 Feb 2020 19:57:31 -0800
+
 regolith-gnome-flashback (2.3.1-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Expand wallpaper path before calling gsettings to allow ~ specification. 

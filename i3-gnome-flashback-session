@@ -9,7 +9,7 @@ UBUNTU_VERSION=$(lsb_release -rs)
 if [ "$UBUNTU_VERSION" = "18.04" ]; then
     GNOME_PARAM=""
 else
-    GNOME_PARAM="-builtin"
+    GNOME_PARAM="--builtin"
 fi
 
 exec gnome-session $GNOME_PARAM --session=i3-gnome-flashback --disable-acceleration-check "$@"

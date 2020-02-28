@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.1-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Fix bug that passes invalid param to gnome-session on Eoan. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 28 Feb 2020 07:57:37 -0800
+
 regolith-gnome-flashback (2.4.0-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Predicate breaking gnome-session parameter in script, allowing single

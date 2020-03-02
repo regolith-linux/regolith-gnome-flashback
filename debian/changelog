@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.4.2-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Predicate bionic on codename instead of version for Ubuntu variants such
+    as Zorin. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Mon, 02 Mar 2020 08:55:44 -0800
+
 regolith-gnome-flashback (2.4.1-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Fix bug that passes invalid param to gnome-session on Eoan. 

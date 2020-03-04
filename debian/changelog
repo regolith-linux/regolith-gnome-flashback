@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.4.3-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Adopt new heuristic to determine parameter signature of gnome-session-bin
+    based on version.
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 03 Mar 2020 20:40:18 -0800
+
 regolith-gnome-flashback (2.4.2-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Predicate bionic on codename instead of version for Ubuntu variants such

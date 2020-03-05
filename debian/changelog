@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.4-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Use bash for valid session initialization. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Wed, 04 Mar 2020 20:20:11 -0800
+
 regolith-gnome-flashback (2.4.3-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Adopt new heuristic to determine parameter signature of gnome-session-bin

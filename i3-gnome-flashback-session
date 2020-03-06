@@ -9,9 +9,7 @@ GNOME_SESSION_BIN_VERSION=$(dpkg -s gnome-session-bin | grep '^Version:' | cut -
 COMPACT_VERSION="${GNOME_SESSION_BIN_VERSION//.}"
 
 if [ $COMPACT_VERSION -gt 3320 ]; then
-    SESSION_PARAM="--builtin"
+    exec gnome-session --builtin --session=i3-gnome-flashback --disable-acceleration-check "$@"
 else 
-    SESSION_PARAM=""
+    exec gnome-session --session=i3-gnome-flashback --disable-acceleration-check "$@"
 fi
-
-exec gnome-session $GNOME_PARAM --session=i3-gnome-flashback --disable-acceleration-check "$@"

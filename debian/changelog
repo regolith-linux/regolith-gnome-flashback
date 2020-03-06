@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.4.5-1ubuntu1~ppa1) eoan; urgency=medium
+
+  * Yet another fix to session loading. Environment variables cannot be
+    command line parameters it seems. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Thu, 05 Mar 2020 21:19:02 -0800
+
 regolith-gnome-flashback (2.4.4-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Use bash for valid session initialization. 

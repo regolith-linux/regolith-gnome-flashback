@@ -1,3 +1,11 @@
+regolith-gnome-flashback (2.4.6) eoan; urgency=medium
+
+  * Disable unnecessary CSD decorations based on
+    https://github.com/regolith-linux/regolith-desktop/issues/305
+  * Bump version flag to initialize session. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Mon, 06 Apr 2020 18:08:27 -0700
+
 regolith-gnome-flashback (2.4.5-1ubuntu1~ppa1) eoan; urgency=medium
 
   * Yet another fix to session loading. Environment variables cannot be

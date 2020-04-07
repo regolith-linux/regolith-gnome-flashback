@@ -16,7 +16,7 @@ BASELINE_XRESOURCE_FILE="$HOME/.Xresources"
 BASELINE_I3_CONFIG_FILE="/etc/i3/config"
 
 # File Locations - Settings Backup
-BACKUP_GNOME_SETTINGS="$HOME/.regolith-gnome-backup"
+BACKUP_GNOME_SETTINGS="$HOME/.regolith-gnome-backup-r1-4"
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.
 if [ -n "$DESKTOP_AUTOSTART_ID" ]; then
@@ -53,7 +53,7 @@ fi
 
 # The following stanza is to set Regolith-specific changes over default Ubuntu settings.
 UPDATE_FLAG_DIR="$HOME/.config/regolith/flags"
-UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup-r1-3"
+UPDATE_FLAG_FILE="$UPDATE_FLAG_DIR/first-time-setup-r1-4"
 if [ ! -f "$UPDATE_FLAG_FILE" ]; then
     echo "Executing Regolith session configuration script."
 
@@ -68,6 +68,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         echo "gsettings set org.gnome.desktop.interface gtk-theme $(gsettings get org.gnome.desktop.interface gtk-theme)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.desktop.wm.preferences theme $(gsettings get org.gnome.desktop.wm.preferences theme)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.desktop.interface icon-theme $(gsettings get org.gnome.desktop.interface icon-theme)" >>$BACKUP_GNOME_SETTINGS
+        echo "gsettings set org.gnome.desktop.wm.preferences button-layout $(gsettings get org.gnome.desktop.wm.preferences button-layout)" >>$BACKUP_GNOME_SETTINGS
     fi
 
     # Required for i3 and gnome to coexist
@@ -80,6 +81,9 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
     # Remap default keyboard switch keybindings to avoid collision w/ i3
     gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"
     gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt><Super>BackSpace']"
+
+    # Remove unnecessary window decorations from GNOME apps.
+    gsettings set org.gnome.desktop.wm.preferences button-layout $(xrescat gnome.button-layout :)
 
     # Only run this script once per install of Regolith.
     mkdir -p $UPDATE_FLAG_DIR

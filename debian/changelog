@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.4.7) eoan; urgency=medium
+
+  * Predicate initialization on gnome-flashback version due to dconf key name
+    changes in 3.36. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 07 Apr 2020 20:25:39 -0700
+
 regolith-gnome-flashback (2.4.6) eoan; urgency=medium
 
   * Disable unnecessary CSD decorations based on

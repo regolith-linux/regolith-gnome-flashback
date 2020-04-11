@@ -65,7 +65,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         gsettings set org.gnome.gnome-flashback desktop-background true
     else
         gsettings set org.gnome.gnome-flashback desktop false
-        gsettings set org.gnome.gnome.flashback root-background true
+        gsettings set org.gnome.gnome-flashback root-background true
     fi
 
     GNOME_FLASHBACK_VERSION_STR=$(dpkg -s gnome-flashback | grep '^Version:' | cut -d' ' -f 2 | cut -d'-' -f 1)
@@ -87,7 +87,7 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
             echo "gsettings set org.gnome.gnome-flashback desktop-background $(gsettings get org.gnome.gnome-flashback desktop-background)" >>$BACKUP_GNOME_SETTINGS
         else 
             echo "gsettings set org.gnome.gnome-flashback desktop $(gsettings get org.gnome.gnome-flashback desktop)" >>$BACKUP_GNOME_SETTINGS
-            echo "gsettings set org.gnome.gnome.flashback root-background $(gsettings get org.gnome.gnome.flashback root-background)" >>$BACKUP_GNOME_SETTINGS
+            echo "gsettings set org.gnome.gnome-flashback root-background $(gsettings get org.gnome.gnome-flashback root-background)" >>$BACKUP_GNOME_SETTINGS
         fi
     fi
 

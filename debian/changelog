@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.11-1) focal; urgency=medium
+
+  * Bump update version flag so system tray will work on i3bar. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 02 May 2020 16:30:25 -0700
+
 regolith-gnome-flashback (2.4.10-1) focal; urgency=medium
 
   * Add 'Regolith' to session descriptor for subsequent migration to GSettings

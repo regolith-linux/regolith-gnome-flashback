@@ -1,3 +1,12 @@
+regolith-gnome-flashback (2.4.10-1) focal; urgency=medium
+
+  * Add 'Regolith' to session descriptor for subsequent migration to GSettings
+    overrides instead of explicitly setting session globally.
+  * Add Xres override to completely ignore gnome theme settings if set
+  * Cleanup 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 02 May 2020 11:20:28 -0700
+
 regolith-gnome-flashback (2.4.9-1) focal; urgency=medium
 
   * Temp fix for system tray issue. 

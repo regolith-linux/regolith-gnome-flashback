@@ -82,11 +82,11 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         echo "gsettings set org.gnome.desktop.interface icon-theme $(gsettings get org.gnome.desktop.interface icon-theme)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.desktop.wm.preferences button-layout $(gsettings get org.gnome.desktop.wm.preferences button-layout)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.gnome-flashback status-notifier-watcher $(gsettings get org.gnome.gnome-flashback status-notifier-watcher)" >>$BACKUP_GNOME_SETTINGS
-        
+
         if [ $GNOME_FLASHBACK_VERSION -le 3340 ]; then
             echo "gsettings set org.gnome.desktop.background show-desktop-icons $(gsettings get org.gnome.desktop.background show-desktop-icons)" >>$BACKUP_GNOME_SETTINGS
             echo "gsettings set org.gnome.gnome-flashback desktop-background $(gsettings get org.gnome.gnome-flashback desktop-background)" >>$BACKUP_GNOME_SETTINGS
-        else 
+        else
             echo "gsettings set org.gnome.gnome-flashback desktop $(gsettings get org.gnome.gnome-flashback desktop)" >>$BACKUP_GNOME_SETTINGS
             echo "gsettings set org.gnome.gnome-flashback root-background $(gsettings get org.gnome.gnome-flashback root-background)" >>$BACKUP_GNOME_SETTINGS
         fi
@@ -112,9 +112,10 @@ fi
 
 UI_REFRESH_FLAG_FILE="$UPDATE_FLAG_DIR/ui-fingerprint"
 KNOWN_FINGERPRINT=$(<$UI_REFRESH_FLAG_FILE)
+ENABLE_SET_GNOME_SETTINGS=$(xrescat gnome.session.configure true)
 # Generate hash from Xresources that don't begin with 'X'.
 CURRENT_FINGERPRINT=$(xrdb -query | grep -v ^X | md5sum | cut -d' ' -f1)
-if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT ]]; then
+if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT && "$ENABLE_SET_GNOME_SETTINGS" == "true" ]]; then
     # Set the theme from Xresources values.
     gsettings set org.gnome.desktop.interface gtk-theme "$(xrescat gnome.gtk.theme Adwaita)"
     gsettings set org.gnome.desktop.wm.preferences theme "$(xrescat gnome.wm.theme Adwaita)"
@@ -127,7 +128,7 @@ if [[ $KNOWN_FINGERPRINT != $CURRENT_FINGERPRINT ]]; then
     fi
 
     # Save current fingerprint to avoid unnecessary configuration.
-    echo $CURRENT_FINGERPRINT >$UI_REFRESH_FLAG_FILE
+    echo $CURRENT_FINGERPRINT > $UI_REFRESH_FLAG_FILE
 fi
 
 # Launch i3wm with the Regolith configuration

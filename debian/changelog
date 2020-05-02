@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.9-1) focal; urgency=medium
+
+  * Temp fix for system tray issue. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 02 May 2020 09:50:57 -0700
+
 regolith-gnome-flashback (2.4.8) eoan; urgency=medium
 
   * Take @akampjes fix for flashback desktop background setting. 

@@ -81,7 +81,8 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
         echo "gsettings set org.gnome.desktop.wm.preferences theme $(gsettings get org.gnome.desktop.wm.preferences theme)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.desktop.interface icon-theme $(gsettings get org.gnome.desktop.interface icon-theme)" >>$BACKUP_GNOME_SETTINGS
         echo "gsettings set org.gnome.desktop.wm.preferences button-layout $(gsettings get org.gnome.desktop.wm.preferences button-layout)" >>$BACKUP_GNOME_SETTINGS
-
+        echo "gsettings set org.gnome.gnome-flashback status-notifier-watcher $(gsettings get org.gnome.gnome-flashback status-notifier-watcher)" >>$BACKUP_GNOME_SETTINGS
+        
         if [ $GNOME_FLASHBACK_VERSION -le 3340 ]; then
             echo "gsettings set org.gnome.desktop.background show-desktop-icons $(gsettings get org.gnome.desktop.background show-desktop-icons)" >>$BACKUP_GNOME_SETTINGS
             echo "gsettings set org.gnome.gnome-flashback desktop-background $(gsettings get org.gnome.gnome-flashback desktop-background)" >>$BACKUP_GNOME_SETTINGS
@@ -93,6 +94,9 @@ if [ ! -f "$UPDATE_FLAG_FILE" ]; then
 
     # Disable built-in notification system for Rofication
     gsettings set org.gnome.gnome-flashback notifications false
+
+    # Disable built-in system tray facility.
+    gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
     # Remap default keyboard switch keybindings to avoid collision w/ i3
     gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt><Super>BackSpace']"

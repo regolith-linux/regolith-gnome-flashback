@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z $XDG_CURRENT_DESKTOP ]; then
-    export XDG_CURRENT_DESKTOP="GNOME-Flashback:GNOME"
+    export XDG_CURRENT_DESKTOP="Regolith:GNOME-Flashback:GNOME"
 fi
 
 # gnome-session broke compatability between 19.04 (3.32.0) and 19.10 (3.34.1) versions of Ubuntu (gnome-session-bin).

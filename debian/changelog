@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.13-1) focal; urgency=medium
+
+  * Version bump to appease package builder.  No change from previous version. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 03 May 2020 20:35:12 -0700
+
 regolith-gnome-flashback (2.4.12-1) focal; urgency=medium
 
   * Update session descriptor to Regolith in another file. 

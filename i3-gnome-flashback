@@ -42,6 +42,12 @@ if [ -f "$USER_XRESOURCE_OVERRIDE_FILE" ]; then
     xrdb -I$USER_XRESOURCE_SEARCH_PATH -merge $USER_XRESOURCE_OVERRIDE_FILE
 fi
 
+# Change the quotes in workspace names from double to to single.
+# Due to a limitation of the preprocessor they have double quotes.
+# The i3-wm workspace command fails with double quotes in the name
+xrdb -query |grep i3-wm.workspace.|sed "s/\"/'/g"|xrdb -merge
+
+
 # Determine i3 config file
 if [ -f "$USER_I3_CONFIG_FILE" ]; then
     REGOLITH_I3_CONFIG_FILE=$USER_I3_CONFIG_FILE

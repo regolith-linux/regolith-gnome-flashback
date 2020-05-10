@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.14-1) focal; urgency=medium
+
+  * Take @jensens fix for double quote in workspace name. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 09 May 2020 19:47:30 -0700
+
 regolith-gnome-flashback (2.4.13-1) focal; urgency=medium
 
   * Version bump to appease package builder.  No change from previous version. 

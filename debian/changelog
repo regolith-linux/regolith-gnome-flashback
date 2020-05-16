@@ -1,3 +1,11 @@
+regolith-gnome-flashback (2.4.17-1focal1) focal; urgency=medium
+
+  * Move to gsettings overrides for static dconf changes.
+  * Change session name from i3-gnome to regolith.
+  * Remove wm theme setting.
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 16 May 2020 09:47:45 -0700
+
 regolith-gnome-flashback (2.4.14-1) focal; urgency=medium
 
   * Take @jensens fix for double quote in workspace name. 

@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.4.19-1focal1) focal; urgency=medium
+
+  * Fix wallpaper gsettings override. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 16 May 2020 21:45:28 -0700
+
 regolith-gnome-flashback (2.4.18-1focal1) focal; urgency=medium
 
   * Remove non Regolith i3 config file load logic. 

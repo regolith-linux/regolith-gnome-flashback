@@ -13,7 +13,6 @@ DEFAULT_I3_CONFIG_FILE="/etc/regolith/i3/config"
 
 # File Locations - Baseline
 BASELINE_XRESOURCE_FILE="$HOME/.Xresources"
-BASELINE_I3_CONFIG_FILE="/etc/i3/config"
 
 # Load default Xresources
 if [ -f "$BASELINE_XRESOURCE_FILE" ]; then
@@ -40,10 +39,8 @@ xrdb -query |grep i3-wm.workspace.|sed "s/\"/'/g"|xrdb -merge
 # Determine i3 config file
 if [ -f "$USER_I3_CONFIG_FILE" ]; then
     REGOLITH_I3_CONFIG_FILE=$USER_I3_CONFIG_FILE
-elif [ -f "$DEFAULT_I3_CONFIG_FILE" ]; then
-    REGOLITH_I3_CONFIG_FILE=$DEFAULT_I3_CONFIG_FILE
 else
-    REGOLITH_I3_CONFIG_FILE=$BASELINE_I3_CONFIG_FILE
+    REGOLITH_I3_CONFIG_FILE=$DEFAULT_I3_CONFIG_FILE
 fi
 
 # Register with gnome-session so that it does not kill the whole session thinking it is dead.

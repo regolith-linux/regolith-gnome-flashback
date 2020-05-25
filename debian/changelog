@@ -1,3 +1,9 @@
+regolith-gnome-flashback (2.5.0-1) bionic; urgency=medium
+
+  * Remove desktop files moved to regolith-default-settings. 
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 24 May 2020 20:16:43 -0700
+
 regolith-gnome-flashback (2.4.19-1focal1) focal; urgency=medium
 
   * Fix wallpaper gsettings override. 

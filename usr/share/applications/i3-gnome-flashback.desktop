@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=i3-gnome-flashback
-Comment=Improved dynamic tiling window manager
-Exec=i3-gnome-flashback
-X-GNOME-WMName=i3-gnome-flashback
+Name=regolith
+Comment=Productivity-focused desktop environment, Regolith
+Exec=regolith-session-init
+X-GNOME-WMName=Regolith
 X-GNOME-Autostart-Phase=WindowManager
 X-GNOME-Provides=windowmanager
 X-GNOME-Autostart-Notify=false

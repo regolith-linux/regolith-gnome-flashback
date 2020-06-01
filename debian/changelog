@@ -1,3 +1,12 @@
+regolith-gnome-flashback (2.6.0-1) bionic; urgency=medium
+
+  [ Ken Gilmer ]
+  * Add gbp config file.
+  * Simply package, model directories in package and remove Makefile.
+  * Update session files to refer to regolith over i3-gnome-flashback.  Experimental.
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Mon, 01 Jun 2020 09:10:25 -0700
+
 regolith-gnome-flashback (2.5.0-1) bionic; urgency=medium
 
   * Remove desktop files moved to regolith-default-settings. 

@@ -9,7 +9,7 @@ GNOME_SESSION_BIN_VERSION=$(dpkg -s gnome-session-bin | grep '^Version:' | cut -
 COMPACT_VERSION="${GNOME_SESSION_BIN_VERSION//.}"
 
 if [ $COMPACT_VERSION -gt 3320 ]; then
-    exec gnome-session --builtin --session=i3-gnome-flashback --disable-acceleration-check "$@"
+    exec gnome-session --builtin --session=regolith --disable-acceleration-check "$@"
 else 
-    exec gnome-session --session=i3-gnome-flashback --disable-acceleration-check "$@"
+    exec gnome-session --session=regolith --disable-acceleration-check "$@"
 fi

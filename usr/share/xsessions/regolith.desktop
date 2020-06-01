@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Regolith
 Comment=Productivity focused desktop environment
-Exec=i3-gnome-flashback-session
+Exec=regolith-session
 TryExec=i3
 Type=Application
 DesktopNames=Regolith;GNOME-Flashback;GNOME

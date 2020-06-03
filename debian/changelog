@@ -1,3 +1,10 @@
+regolith-gnome-flashback (2.6.1-1) bionic; urgency=medium
+
+  [ Ken Gilmer ]
+  * Rename files to make session work.
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 02 Jun 2020 21:31:13 -0700
+
 regolith-gnome-flashback (2.6.0-1) bionic; urgency=medium
 
   [ Ken Gilmer ]

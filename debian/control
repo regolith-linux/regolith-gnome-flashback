@@ -10,7 +10,6 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-gnome-flashback
 Architecture: any
 Depends: ${misc:Depends},
-    coreutils,
     dbus,
     gnome-flashback,
     gnome-session-bin,
@@ -19,3 +18,6 @@ Depends: ${misc:Depends},
     x11-xserver-utils
 Conflicts: session-shortcuts
 Description: Regolith customized gnome-flashback session
+ This package contains the desktop and xsession configuration 
+ necessary to start a Regolith desktop session. It is based on 
+ https://github.com/deuill/i3-gnome-flashback.

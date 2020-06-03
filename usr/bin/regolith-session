@@ -10,6 +10,6 @@ COMPACT_VERSION="${GNOME_SESSION_BIN_VERSION//.}"
 
 if [ $COMPACT_VERSION -gt 3320 ]; then
     exec gnome-session --builtin --session=regolith --disable-acceleration-check "$@"
-else 
+else
     exec gnome-session --session=regolith --disable-acceleration-check "$@"
 fi
